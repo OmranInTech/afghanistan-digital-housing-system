@@ -1,13 +1,13 @@
-import React, { useState, ChangeEvent, FormEvent } from "react";
+import React, { useState } from "react";
 
-// 1. Define the exact shape of your state
 interface AgentFormData {
+  username: string;
   firstName: string;
   lastName: string;
   email: string;
   password: string;
   govCode: string;
-  role: "AGENT" | "ADMIN"; // Strict literal type matching your ENUM
+  role: "AGENT" | "ADMIN";
   idNumber: string;
   licenseNumber: string;
   locationMetrics: string;
@@ -15,6 +15,7 @@ interface AgentFormData {
 
 export default function SalesAgentForm(): React.JSX.Element {
   const [formData, setFormData] = useState<AgentFormData>({
+    username: "",
     firstName: "",
     lastName: "",
     email: "",
@@ -26,26 +27,64 @@ export default function SalesAgentForm(): React.JSX.Element {
     locationMetrics: "",
   });
 
-  // FIX 1: Explicitly cast the target element using a union type.
-  // This tells TypeScript that the target can be either an Input or Select element,
-  // making 'name' and 'value' perfectly safe to access.
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>): void => {
+  const [uiMessage, setUiMessage] = useState<{ status: "success" | "error" | null; text: string }>({
+    status: null,
+    text: "",
+  });
+
+  // RESOLUTION 1: Used explicit namespaced type mapping to wipe out top line import dependency errors
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>): void => {
     const { name, value } = e.target;
-    
     setFormData((prevData) => ({
       ...prevData,
-      // Using 'as keyof AgentFormData' prevents TS from complaining about string indexing
-      [name]: value as AgentFormData[keyof AgentFormData],
+      [name as keyof AgentFormData]: value,
     }));
   };
 
-  // FIX 2: Enforce the FormEvent typing cleanly on the submission wrapper
-  const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
+  // RESOLUTION 2: Swapped out type modifier dependency block directly for React.FormEvent namespace wrapper
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
-    console.log("Submitting Premium Agent Payload: ", formData);
+    setUiMessage({ status: null, text: "" });
+
+    try {
+      const response = await fetch("http://localhost:8000/api/v1/auth/register-agent/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        setUiMessage({ status: "success", text: data.message });
+        setFormData({
+          username: "",
+          firstName: "",
+          lastName: "",
+          email: "",
+          password: "",
+          govCode: "",
+          role: "AGENT",
+          idNumber: "",
+          licenseNumber: "",
+          locationMetrics: "",
+        });
+      } else {
+        const errorMsg = data.errors 
+          ? Object.entries(data.errors)
+              .map(([field, msgs]) => `${field}: ${(msgs as string[]).join(" ")}`)
+              .join(" | ") 
+          : "Failed to register agent account details.";
+        setUiMessage({ status: "error", text: errorMsg });
+      }
+    } catch (error) {
+      setUiMessage({ status: "error", text: "Could not connect to the backend database server." });
+    }
   };
 
-  // Modern UI layout styling specs
   const inputStyle: React.CSSProperties = {
     width: "100%",
     padding: "10px 14px",
@@ -55,7 +94,7 @@ export default function SalesAgentForm(): React.JSX.Element {
     backgroundColor: "#ffffff",
     color: "#2d3748",
     outline: "none",
-    transition: "border-color 0.2s, box-shadow 0.2s",
+    boxSizing: "border-box",
   };
 
   const labelStyle: React.CSSProperties = {
@@ -77,16 +116,55 @@ export default function SalesAgentForm(): React.JSX.Element {
         borderRadius: "12px",
         boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.05)",
         border: "1px solid #edf2f7",
+        width: "100%",
+        boxSizing: "border-box",
       }}
     >
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(2, 1fr)",
-          gap: "24px",
-          marginBottom: "32px",
-        }}
-      >
+      {uiMessage.status && (
+        <div style={{
+          padding: "12px 16px",
+          borderRadius: "6px",
+          marginBottom: "24px",
+          fontWeight: 500,
+          fontSize: "14px",
+          backgroundColor: uiMessage.status === "success" ? "#f0fff4" : "#fff5f5",
+          color: uiMessage.status === "success" ? "#276749" : "#9b2c2c",
+          border: uiMessage.status === "success" ? "1px solid #c6f6d5" : "1px solid #fed7d7"
+        }}>
+          {uiMessage.text}
+        </div>
+      )}
+
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "24px", marginBottom: "32px" }}>
+        
+        {/* Username */}
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <label style={labelStyle}>System Username</label>
+          <input
+            type="text"
+            name="username"
+            placeholder="e.g., ahmad_agent"
+            required
+            style={inputStyle}
+            value={formData.username}
+            onChange={handleChange}
+          />
+        </div>
+
+        {/* Email */}
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <label style={labelStyle}>Official Email Address</label>
+          <input
+            type="email"
+            name="email"
+            placeholder="a.rahimi@registry.gov.af"
+            required
+            style={inputStyle}
+            value={formData.email}
+            onChange={handleChange}
+          />
+        </div>
+
         {/* First Name */}
         <div style={{ display: "flex", flexDirection: "column" }}>
           <label style={labelStyle}>First Name</label>
@@ -111,20 +189,6 @@ export default function SalesAgentForm(): React.JSX.Element {
             required
             style={inputStyle}
             value={formData.lastName}
-            onChange={handleChange}
-          />
-        </div>
-
-        {/* Email */}
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          <label style={labelStyle}>Official Email Address</label>
-          <input
-            type="email"
-            name="email"
-            placeholder="a.rahimi@registry.gov.af"
-            required
-            style={inputStyle}
-            value={formData.email}
             onChange={handleChange}
           />
         </div>
@@ -178,27 +242,10 @@ export default function SalesAgentForm(): React.JSX.Element {
             type="text"
             name="licenseNumber"
             placeholder="e.g., L-49201"
-            required
             style={inputStyle}
             value={formData.licenseNumber}
             onChange={handleChange}
           />
-        </div>
-
-        {/* System Access Role */}
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          <label style={labelStyle}>Assigned System Role</label>
-          {/* Note: We use readOnly instead of disabled so that the value is still readable by the form submission context if needed, without causing typed lock issues */}
-          <select
-            name="role"
-            readOnly
-            style={{ ...inputStyle, backgroundColor: "#f7fafc", cursor: "not-allowed" }}
-            value={formData.role}
-            onChange={handleChange}
-          >
-            <option value="AGENT">Field Registry Agent (Mobile App Access)</option>
-            <option value="ADMIN">Central System Admin</option>
-          </select>
         </div>
 
         {/* Location Metrics */}
@@ -216,31 +263,7 @@ export default function SalesAgentForm(): React.JSX.Element {
         </div>
       </div>
 
-      {/* Footer Controls */}
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "flex-end",
-          gap: "12px",
-          borderTop: "1px solid #edf2f7",
-          paddingTop: "20px",
-        }}
-      >
-        <button
-          type="button"
-          style={{
-            background: "transparent",
-            border: "1px solid #cbd5e0",
-            color: "#4a5568",
-            padding: "10px 20px",
-            borderRadius: "6px",
-            fontSize: "14px",
-            fontWeight: 500,
-            cursor: "pointer",
-          }}
-        >
-          Cancel
-        </button>
+      <div style={{ display: "flex", justifyContent: "flex-end", gap: "12px", borderTop: "1px solid #edf2f7", paddingTop: "20px" }}>
         <button
           type="submit"
           style={{
