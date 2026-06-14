@@ -155,3 +155,5 @@ CORS_ALLOW_HEADERS = [
     "x-csrftoken",
     "x-requested-with",
 ]
+# settings.py
+AUTH_USER_MODEL = 'accounts.Agent'
