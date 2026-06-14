@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'accounts',
     'rest_framework',
     'corsheaders',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -157,3 +158,11 @@ CORS_ALLOW_HEADERS = [
 ]
 # settings.py
 AUTH_USER_MODEL = 'accounts.Agent'
+
+# settings.py
+
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'localhost',
+    '10.0.2.2',  # This allows the Android Emulator to connect
+]
