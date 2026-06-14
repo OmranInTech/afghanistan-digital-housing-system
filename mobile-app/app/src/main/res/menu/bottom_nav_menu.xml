@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/nav_home" android:title="Home" android:icon="@android:drawable/ic_menu_agenda" />
+    <item android:id="@+id/nav_new_deal" android:title="New Deal" android:icon="@android:drawable/ic_input_add" />
+    <item android:id="@+id/nav_pending" android:title="Pending" android:icon="@android:drawable/ic_menu_recent_history" />
+    <item android:id="@+id/nav_notif" android:title="Notifications" android:icon="@android:drawable/ic_popup_reminder" />
+    <item android:id="@+id/nav_profile" android:title="Profile" android:icon="@android:drawable/ic_menu_myplaces" />
+</menu>
