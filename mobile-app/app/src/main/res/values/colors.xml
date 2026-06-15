@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="sapphire_dark">#0d1b2a</color>
+    <color name="sapphire_light">#1b263b</color>
     <color name="teal_accent">#319795</color>
+
     <color name="light_gray">#a0aec0</color>
     <color name="white">#ffffff</color>
-</resources>
+    <color name="background_gray">#f7fafc</color>
+
+    <color name="nav_active">#319795</color>   <color name="nav_inactive">#a0aec0</color> </resources>

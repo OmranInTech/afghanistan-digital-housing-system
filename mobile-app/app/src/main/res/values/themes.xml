@@ -1,5 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+
     <style name="PremiumOutlineButtonStyle" parent="Widget.MaterialComponents.Button.OutlinedButton">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">65dp</item>
@@ -11,7 +11,9 @@
         <item name="backgroundTint">@android:color/transparent</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textStyle">bold</item>
-    </style>  <style name="PremiumButtonStyle" parent="Widget.MaterialComponents.Button">
+    </style>
+
+    <style name="PremiumButtonStyle" parent="Widget.MaterialComponents.Button">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">60dp</item>
         <item name="android:layout_marginBottom">12dp</item>
@@ -20,5 +22,10 @@
         <item name="cornerRadius">8dp</item>
     </style>
 
-    <style name="Theme.Salesagentapp" parent="Base.Theme.Salesagentapp" />
+    <style name="Theme.Salesagentapp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/sapphire_dark</item>
+        <item name="colorSecondary">@color/teal_accent</item>
+        <item name="android:windowBackground">@color/white</item>
+    </style>
+
 </resources>

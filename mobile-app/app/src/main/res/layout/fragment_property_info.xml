@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FAFAFA"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Property Details"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#0d1b2a"
+            android:layout_marginBottom="16dp"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Property Type"
+            android:layout_marginBottom="8dp">
+            <AutoCompleteTextView
+                android:id="@+id/RenPrActvType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Province" android:layout_marginBottom="8dp"><com.google.android.material.textfield.TextInputEditText android:id="@+id/RenPrEtProv" android:layout_width="match_parent" android:layout_height="wrap_content"/></com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="District" android:layout_marginBottom="8dp"><com.google.android.material.textfield.TextInputEditText android:id="@+id/RenPrEtDist" android:layout_width="match_parent" android:layout_height="wrap_content"/></com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Village" android:layout_marginBottom="8dp"><com.google.android.material.textfield.TextInputEditText android:id="@+id/RenPrEtVillage" android:layout_width="match_parent" android:layout_height="wrap_content"/></com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Full Address" android:layout_marginBottom="8dp"><com.google.android.material.textfield.TextInputEditText android:id="@+id/RenPrEtAddress" android:layout_width="match_parent" android:layout_height="wrap_content"/></com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Coordinates (Lat, Long)" android:layout_marginBottom="16dp"><com.google.android.material.textfield.TextInputEditText android:id="@+id/RenPrEtCoords" android:layout_width="match_parent" android:layout_height="wrap_content"/></com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+            <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:hint="Land Area (m2)" android:layout_marginEnd="4dp"><com.google.android.material.textfield.TextInputEditText android:id="@+id/RenPrEtLandArea" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="number"/></com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:hint="Build Area (m2)" android:layout_marginStart="4dp"><com.google.android.material.textfield.TextInputEditText android:id="@+id/RenPrEtBuildArea" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="number"/></com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+            <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:hint="Floors" android:layout_marginEnd="4dp"><com.google.android.material.textfield.TextInputEditText android:id="@+id/RenPrEtFloors" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="number"/></com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:hint="Rooms" android:layout_marginStart="4dp"><com.google.android.material.textfield.TextInputEditText android:id="@+id/RenPrEtRooms" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="number"/></com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+            <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:hint="Bedrooms" android:layout_marginEnd="4dp"><com.google.android.material.textfield.TextInputEditText android:id="@+id/RenPrEtBedrooms" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="number"/></com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:hint="Bathrooms" android:layout_marginStart="4dp"><com.google.android.material.textfield.TextInputEditText android:id="@+id/RenPrEtBathrooms" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="number"/></com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Kitchens" android:layout_marginBottom="8dp"><com.google.android.material.textfield.TextInputEditText android:id="@+id/RenPrEtKitchens" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="number"/></com.google.android.material.textfield.TextInputLayout>
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Boundaries" android:textStyle="bold" android:layout_marginBottom="8dp"/>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+            <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:hint="North" android:layout_marginEnd="4dp"><com.google.android.material.textfield.TextInputEditText android:id="@+id/RenPrEtBoundNorth" android:layout_width="match_parent" android:layout_height="wrap_content"/></com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:hint="South" android:layout_marginStart="4dp"><com.google.android.material.textfield.TextInputEditText android:id="@+id/RenPrEtBoundSouth" android:layout_width="match_parent" android:layout_height="wrap_content"/></com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+            <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:hint="East" android:layout_marginEnd="4dp"><com.google.android.material.textfield.TextInputEditText android:id="@+id/RenPrEtBoundEast" android:layout_width="match_parent" android:layout_height="wrap_content"/></com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:hint="West" android:layout_marginStart="4dp"><com.google.android.material.textfield.TextInputEditText android:id="@+id/RenPrEtBoundWest" android:layout_width="match_parent" android:layout_height="wrap_content"/></com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Construction Year" android:layout_marginTop="8dp" android:layout_marginBottom="8dp"><com.google.android.material.textfield.TextInputEditText android:id="@+id/RenPrEtConstYear" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="number"/></com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Electricity Meter #" android:layout_marginBottom="8dp"><com.google.android.material.textfield.TextInputEditText android:id="@+id/RenPrEtElecMeter" android:layout_width="match_parent" android:layout_height="wrap_content"/></com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Water Meter #" android:layout_marginBottom="24dp"><com.google.android.material.textfield.TextInputEditText android:id="@+id/RenPrEtWaterMeter" android:layout_width="match_parent" android:layout_height="wrap_content"/></com.google.android.material.textfield.TextInputLayout>
+
+        <Button android:id="@+id/RenPrBtnSubmit" android:layout_width="match_parent" android:layout_height="60dp" android:text="Finalize &amp; Register" android:backgroundTint="#0d1b2a"/>
+    </LinearLayout>
+</ScrollView>
