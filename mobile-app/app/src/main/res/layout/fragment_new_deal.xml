@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:padding="24dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="New Property Deal"
+            android:textColor="#0d1b2a"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select the type of transaction to begin"
+            android:textColor="#718096"
+            android:textSize="14sp"
+            android:layout_marginBottom="32dp" />
+
+        <Button android:id="@+id/btnRent" style="@style/PremiumOutlineButtonStyle" android:text="Rent Deal" />
+        <Button android:id="@+id/btnMortgage" style="@style/PremiumOutlineButtonStyle" android:text="Mortgage Deal" />
+        <Button android:id="@+id/btnSellBuy" style="@style/PremiumOutlineButtonStyle" android:text="Sell / Buy Deal" />
+
+    </LinearLayout>
+</ScrollView>

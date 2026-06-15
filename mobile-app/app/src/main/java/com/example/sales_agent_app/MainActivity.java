@@ -1,5 +1,6 @@
 package com.example.sales_agent_app;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -47,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Setup Retrofit
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:8000/") // 10.0.2.2 is the special IP for Android Emulator to hit localhost
+                .baseUrl("http://10.0.2.2:8000/") // 10.0.2.2 is the special IP for Android Emulator
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -60,7 +61,13 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<Object> call, Response<Object> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(MainActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                    // NAVIGATE TO NEXT ACTIVITY HERE
+
+                    // Navigate to DashboardActivity
+                    Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
+                    // Clear the task stack so the user cannot press "Back" to return to the Login screen
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                    finish();
                 } else {
                     Toast.makeText(MainActivity.this, "Login Failed: " + response.code(), Toast.LENGTH_SHORT).show();
                 }
