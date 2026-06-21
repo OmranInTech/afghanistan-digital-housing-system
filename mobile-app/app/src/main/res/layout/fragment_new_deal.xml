@@ -1,35 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
-    android:padding="24dp">
+    android:background="#FAFAFA"
+    android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="24dp">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="New Property Deal"
-            android:textColor="#0d1b2a"
-            android:textSize="26sp"
+            android:text="New Transaction"
+            android:textColor="#1A1A1A"
+            android:textSize="28sp"
             android:textStyle="bold"
             android:layout_marginBottom="8dp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Select the type of transaction to begin"
-            android:textColor="#718096"
-            android:textSize="14sp"
-            android:layout_marginBottom="32dp" />
+            android:text="Select the service type to initialize a secure record."
+            android:textColor="#757575"
+            android:textSize="15sp"
+            android:layout_marginBottom="40dp" />
 
-        <Button android:id="@+id/btnRent" style="@style/PremiumOutlineButtonStyle" android:text="Rent Deal" />
-        <Button android:id="@+id/btnMortgage" style="@style/PremiumOutlineButtonStyle" android:text="Mortgage Deal" />
-        <Button android:id="@+id/btnSellBuy" style="@style/PremiumOutlineButtonStyle" android:text="Sell / Buy Deal" />
+        <!-- Rent Option -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="#EEEEEE"
+            app:cardBackgroundColor="#FFFFFF">
+
+            <Button
+                android:id="@+id/btnRent"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:text="Rent Agreement"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:backgroundTint="@android:color/transparent"
+                android:textColor="#0d1b2a"
+                app:elevation="0dp" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Mortgage Option -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="#EEEEEE"
+            app:cardBackgroundColor="#FFFFFF">
+
+            <Button
+                android:id="@+id/btnMortgage"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:text="Mortgage Services"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:backgroundTint="@android:color/transparent"
+                android:textColor="#0d1b2a"
+                app:elevation="0dp" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Sell/Buy Option -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="#EEEEEE"
+            app:cardBackgroundColor="#FFFFFF">
+
+            <Button
+                android:id="@+id/btnSellBuy"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:text="Property Transfer (Buy/Sell)"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:backgroundTint="@android:color/transparent"
+                android:textColor="#0d1b2a"
+                app:elevation="0dp" />
+        </com.google.android.material.card.MaterialCardView>
 
     </LinearLayout>
 </ScrollView>

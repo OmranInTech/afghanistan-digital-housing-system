@@ -4,53 +4,137 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FAFAFA"
-    android:padding="16dp">
+    android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Owner Details" android:textSize="22sp" android:textStyle="bold" android:textColor="#0d1b2a" android:layout_marginBottom="16dp"/>
-
-        <Button
-            android:id="@+id/RenOwnerBtnChooseFile"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:text="Choose Owner Photo"
-            app:icon="@android:drawable/ic_menu_gallery" />
+        android:orientation="vertical"
+        android:padding="24dp">
 
         <TextView
-            android:id="@+id/RenOwnerTvFileName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="No file chosen"
-            android:textSize="12sp"
-            android:layout_marginBottom="16dp"
-            android:gravity="center" />
+            android:text="Owner Identity"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#1A1A1A"
+            android:layout_marginBottom="24dp"/>
 
-        <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Full Name" android:layout_marginBottom="8dp"><com.google.android.material.textfield.TextInputEditText android:id="@+id/RenOwnerEtFullName" android:layout_width="match_parent" android:layout_height="wrap_content"/></com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Father Name" android:layout_marginBottom="8dp"><com.google.android.material.textfield.TextInputEditText android:id="@+id/RenOwnerEtFatherName" android:layout_width="match_parent" android:layout_height="wrap_content"/></com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Grandfather Name" android:layout_marginBottom="8dp"><com.google.android.material.textfield.TextInputEditText android:id="@+id/RenOwnerEtGrandfatherName" android:layout_width="match_parent" android:layout_height="wrap_content"/></com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Gender" android:layout_marginBottom="8dp"><AutoCompleteTextView android:id="@+id/RenOwnerActvGender" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="none"/></com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Phone" android:layout_marginBottom="8dp"><com.google.android.material.textfield.TextInputEditText android:id="@+id/RenOwnerEtPhone" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="phone"/></com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Email" android:layout_marginBottom="8dp"><com.google.android.material.textfield.TextInputEditText android:id="@+id/RenOwnerEtEmail" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textEmailAddress"/></com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="National ID" android:layout_marginBottom="16dp"><com.google.android.material.textfield.TextInputEditText android:id="@+id/RenOwnerEtNationalId" android:layout_width="match_parent" android:layout_height="wrap_content"/></com.google.android.material.textfield.TextInputLayout>
+        <!-- Section 1: Profile -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="#EEEEEE">
 
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="ORIGIN" android:textStyle="bold" android:layout_marginBottom="8dp"/>
-        <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Province" android:layout_marginBottom="8dp"><com.google.android.material.textfield.TextInputEditText android:id="@+id/RenOwnerEtOriginProv" android:layout_width="match_parent" android:layout_height="wrap_content"/></com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="District" android:layout_marginBottom="8dp"><com.google.android.material.textfield.TextInputEditText android:id="@+id/RenOwnerEtOriginDist" android:layout_width="match_parent" android:layout_height="wrap_content"/></com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Village" android:layout_marginBottom="16dp"><com.google.android.material.textfield.TextInputEditText android:id="@+id/RenOwnerEtOriginVillage" android:layout_width="match_parent" android:layout_height="wrap_content"/></com.google.android.material.textfield.TextInputLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
 
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="CURRENT RESIDENCE" android:textStyle="bold" android:layout_marginBottom="8dp"/>
-        <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Province" android:layout_marginBottom="8dp"><com.google.android.material.textfield.TextInputEditText android:id="@+id/RenOwnerEtResProv" android:layout_width="match_parent" android:layout_height="wrap_content"/></com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="District" android:layout_marginBottom="8dp"><com.google.android.material.textfield.TextInputEditText android:id="@+id/RenOwnerEtResDist" android:layout_width="match_parent" android:layout_height="wrap_content"/></com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Village" android:layout_marginBottom="16dp"><com.google.android.material.textfield.TextInputEditText android:id="@+id/RenOwnerEtResVillage" android:layout_width="match_parent" android:layout_height="wrap_content"/></com.google.android.material.textfield.TextInputLayout>
+                <Button
+                    android:id="@+id/RenOwnerBtnChooseFile"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Choose Owner Photo"
+                    app:icon="@android:drawable/ic_menu_gallery" />
 
-        <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="GPS Coordinates (Lat, Long)" android:layout_marginBottom="24dp"><com.google.android.material.textfield.TextInputEditText android:id="@+id/RenOwnerEtGpsCoords" android:layout_width="match_parent" android:layout_height="wrap_content"/></com.google.android.material.textfield.TextInputLayout>
+                <TextView
+                    android:id="@+id/RenOwnerTvFileName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="No file chosen"
+                    android:textSize="12sp"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center" />
 
-        <Button android:id="@+id/RenOwnerBtnNext" android:layout_width="match_parent" android:layout_height="60dp" android:text="Next: Renter" android:backgroundTint="#0d1b2a"/>
+                <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Full Name" android:layout_marginTop="16dp">
+                    <com.google.android.material.textfield.TextInputEditText android:id="@+id/RenOwnerEtFullName" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Father Name" android:layout_marginTop="8dp">
+                    <com.google.android.material.textfield.TextInputEditText android:id="@+id/RenOwnerEtFatherName" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Grandfather Name" android:layout_marginTop="8dp">
+                    <com.google.android.material.textfield.TextInputEditText android:id="@+id/RenOwnerEtGrandfatherName" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Gender" android:layout_marginTop="8dp">
+                    <AutoCompleteTextView android:id="@+id/RenOwnerActvGender" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="none"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Phone" android:layout_marginTop="8dp">
+                    <com.google.android.material.textfield.TextInputEditText android:id="@+id/RenOwnerEtPhone" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="phone"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Email" android:layout_marginTop="8dp">
+                    <com.google.android.material.textfield.TextInputEditText android:id="@+id/RenOwnerEtEmail" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textEmailAddress"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="National ID" android:layout_marginTop="8dp">
+                    <com.google.android.material.textfield.TextInputEditText android:id="@+id/RenOwnerEtNationalId" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Section 2: Geographic Info -->
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Location Details" android:textStyle="bold" android:textSize="18sp" android:layout_marginBottom="12dp" android:textColor="#1A1A1A"/>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="#EEEEEE">
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="ORIGIN" android:textSize="12sp" android:textColor="#9E9E9E" android:textStyle="bold" android:letterSpacing="0.1"/>
+                <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Province">
+                    <com.google.android.material.textfield.TextInputEditText android:id="@+id/RenOwnerEtOriginProv" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="District" android:layout_marginTop="8dp">
+                    <com.google.android.material.textfield.TextInputEditText android:id="@+id/RenOwnerEtOriginDist" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Village" android:layout_marginTop="8dp">
+                    <com.google.android.material.textfield.TextInputEditText android:id="@+id/RenOwnerEtOriginVillage" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#EEEEEE" android:layout_marginVertical="16dp"/>
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="CURRENT RESIDENCE" android:textSize="12sp" android:textColor="#9E9E9E" android:textStyle="bold" android:letterSpacing="0.1"/>
+                <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Province" android:layout_marginTop="8dp">
+                    <com.google.android.material.textfield.TextInputEditText android:id="@+id/RenOwnerEtResProv" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="District" android:layout_marginTop="8dp">
+                    <com.google.android.material.textfield.TextInputEditText android:id="@+id/RenOwnerEtResDist" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Village" android:layout_marginTop="8dp">
+                    <com.google.android.material.textfield.TextInputEditText android:id="@+id/RenOwnerEtResVillage" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="GPS Coordinates (Lat, Long)" android:layout_marginTop="8dp">
+                    <com.google.android.material.textfield.TextInputEditText android:id="@+id/RenOwnerEtGpsCoords" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <Button
+            android:id="@+id/RenOwnerBtnNext"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:text="Next: Renter"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:cornerRadius="16dp"
+            android:backgroundTint="#0d1b2a"/>
+
     </LinearLayout>
 </ScrollView>
