@@ -41,6 +41,13 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'rest_framework.authtoken',
+    'citizens',
+    'properties',
+    'ownership',
+    'deals',
+    'contracts',
+    'documents',
+    'verification',
 ]
 
 MIDDLEWARE = [
