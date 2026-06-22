@@ -1,9 +1,15 @@
-import axios from 'axios';
+import apiClient from "./apiClient";
 
-const API_URL = 'http://127.0.0.1:8000/api/v1/auth/register-agent/';
-
-export const registerAgent = async (formData: FormData) => {
-  return await axios.post(API_URL, formData, {
-    headers: { 'Content-Type': 'multipart/form-data' },
+export const loginUser = async (email: string, password: string) => {
+  const res = await apiClient.post("auth/login/", {
+    email,
+    password,
   });
+
+  return res.data;
+};
+
+export const getProfile = async () => {
+  const res = await apiClient.get("auth/profile/");
+  return res.data;
 };
