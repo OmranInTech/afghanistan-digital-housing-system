@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'contracts',
     'documents',
     'verification',
+    "workflow",
 ]
 
 MIDDLEWARE = [
@@ -173,3 +174,17 @@ ALLOWED_HOSTS = [
     'localhost',
     '10.0.2.2',  # This allows the Android Emulator to connect
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.TokenAuthentication",
+    ],
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticated",
+    ]
+}
