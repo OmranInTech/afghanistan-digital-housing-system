@@ -1,10 +1,10 @@
-import { useDashboard } from "../features/dashboard/hooks/useDashboard";
-import DashboardCards from "../features/dashboard/components/DashboardCards";
+import { useDashboard } from "../hooks/useDashboard";
+import DashboardCards from "../components/dashboard/DashboardCards";
 
 export default function AdminDashboard() {
   const { citizens, properties, deals, loading, reload } = useDashboard();
 
-  if (loading) return <h3>Loading...</h3>;
+  if (loading) return <div>Loading...</div>;
 
   return (
     <div>

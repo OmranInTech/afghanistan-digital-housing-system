@@ -1,47 +1,44 @@
-import axios from "axios";
+import apiClient from "./apiClient";
 
-const API = "http://localhost:8000/api/workflow";
-
-// --------------------
-// GET PENDING QUEUES
-// --------------------
 export const workflowService = {
-  async getPendingCitizens() {
-    const res = await axios.get(`${API}/citizens/pending/`);
+  // ---------------- PENDING QUEUES ----------------
+  getPendingCitizens: async () => {
+    const res = await apiClient.get("/workflow/citizens/pending/");
     return res.data;
   },
 
-  async getPendingProperties() {
-    const res = await axios.get(`${API}/properties/pending/`);
+  getPendingProperties: async () => {
+    const res = await apiClient.get("/workflow/properties/pending/");
     return res.data;
   },
 
-  async getPendingDeals() {
-    const res = await axios.get(`${API}/deals/pending/`);
+  getPendingDeals: async () => {
+    const res = await apiClient.get("/workflow/deals/pending/");
     return res.data;
   },
 
-  // --------------------
-  // ACTION APIs (FIXED)
-  // --------------------
-  async citizenAction(id: string, action: "APPROVE" | "REJECT") {
-    const res = await axios.post(`${API}/citizen/${id}/action/`, {
-      action,
-    });
+  // ---------------- ACTIONS ----------------
+  citizenAction: async (id: string, action: "APPROVE" | "REJECT") => {
+    const res = await apiClient.post(
+      `/workflow/citizen/${id}/action/`,
+      { action }
+    );
     return res.data;
   },
 
-  async propertyAction(id: string, action: "APPROVE" | "REJECT") {
-    const res = await axios.post(`${API}/property/${id}/action/`, {
-      action,
-    });
+  propertyAction: async (id: string, action: "APPROVE" | "REJECT") => {
+    const res = await apiClient.post(
+      `/workflow/property/${id}/action/`,
+      { action }
+    );
     return res.data;
   },
 
-  async dealAction(id: string, action: "APPROVE" | "REJECT") {
-    const res = await axios.post(`${API}/deal/${id}/action/`, {
-      action,
-    });
+  dealAction: async (id: string, action: "APPROVE" | "REJECT") => {
+    const res = await apiClient.post(
+      `/workflow/deal/${id}/action/`,
+      { action }
+    );
     return res.data;
   },
 };

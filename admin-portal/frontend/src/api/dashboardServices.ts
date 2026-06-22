@@ -1,20 +1,23 @@
-import axios from "axios";
-
-const API = "http://localhost:8000/api";
+import apiClient from "./apiClient";
 
 export const dashboardService = {
+  getStats: async () => {
+    const res = await apiClient.get("/dashboard/stats/");
+    return res.data;
+  },
+
   getPendingCitizens: async () => {
-    const res = await axios.get(`${API}/workflow/citizens/pending/`);
+    const res = await apiClient.get("/workflow/citizens/pending/");
     return res.data;
   },
 
   getPendingProperties: async () => {
-    const res = await axios.get(`${API}/workflow/properties/pending/`);
+    const res = await apiClient.get("/workflow/properties/pending/");
     return res.data;
   },
 
   getPendingDeals: async () => {
-    const res = await axios.get(`${API}/workflow/deals/pending/`);
+    const res = await apiClient.get("/workflow/deals/pending/");
     return res.data;
   },
 };
