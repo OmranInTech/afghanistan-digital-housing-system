@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'documents',
     'verification',
     "workflow",
+    "core",
 ]
 
 MIDDLEWARE = [
@@ -163,6 +164,7 @@ CORS_ALLOW_HEADERS = [
     "user-agent",
     "x-csrftoken",
     "x-requested-with",
+    
 ]
 # settings.py
 AUTH_USER_MODEL = 'accounts.Agent'
