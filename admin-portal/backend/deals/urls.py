@@ -1,11 +1,6 @@
-from django.urls import path, include
-from rest_framework.routers import DefaultRouter
-from .views import DealViewSet, DealPartyViewSet
-
-router = DefaultRouter()
-router.register(r'deals', DealViewSet)
-router.register(r'deal-parties', DealPartyViewSet)
+from django.urls import path
+from .api import create_deal
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path("create/", create_deal),
 ]

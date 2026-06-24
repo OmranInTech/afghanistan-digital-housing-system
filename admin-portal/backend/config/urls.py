@@ -8,7 +8,7 @@ urlpatterns = [
     path('api/', include('citizens.urls')),
     path('api/', include('properties.urls')),
     path('api/', include('ownership.urls')),
-    path('api/', include('deals.urls')),
+    path('api/deals/', include('deals.urls')),
     path('api/', include('contracts.urls')),
     path('api/', include('documents.urls')),
     path('api/', include('verification.urls')),
