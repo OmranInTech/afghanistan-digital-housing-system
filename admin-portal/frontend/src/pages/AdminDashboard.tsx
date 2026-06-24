@@ -1,21 +1,22 @@
+import WorkflowBoard from "../components/dashboard/WorkflowBoard";
 import { useDashboard } from "../hooks/useDashboard";
-import DashboardCards from "../components/dashboard/DashboardCards";
 
 export default function AdminDashboard() {
-  const { citizens, properties, deals, loading, reload } = useDashboard();
+  const { citizens, properties, deals, loading } = useDashboard();
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <h2>Loading Dashboard...</h2>;
+
+  const allItems = [
+    ...citizens,
+    ...properties,
+    ...deals,
+  ];
 
   return (
     <div>
-      <h1>Admin Dashboard</h1>
+      <h1>Government Workflow Dashboard</h1>
 
-      <DashboardCards
-        citizens={citizens}
-        properties={properties}
-        deals={deals}
-        reload={reload}
-      />
+      <WorkflowBoard items={allItems} />
     </div>
   );
 }

@@ -34,10 +34,21 @@ export default function Sidebar() {
         color: "#fff",
         padding: "22px 18px",
         boxShadow: "8px 0 30px rgba(0,0,0,0.25)",
+        display: "flex",
+        flexDirection: "column",
       }}
     >
-      <h2 style={{ marginBottom: 20 }}>DPID ADMIN</h2>
+      {/* BRAND */}
+      <div style={{ marginBottom: 24 }}>
+        <h2 style={{ margin: 0, fontSize: 18, letterSpacing: 1 }}>
+          DPID ADMIN
+        </h2>
+        <p style={{ margin: 0, fontSize: 12, color: "#94a3b8" }}>
+          Government Registry System
+        </p>
+      </div>
 
+      {/* NAV */}
       <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
         {items.map((i) => {
           const Icon = i.icon;
@@ -52,10 +63,26 @@ export default function Sidebar() {
                 alignItems: "center",
                 gap: 10,
                 padding: "10px 12px",
-                borderRadius: 8,
+                borderRadius: 10,
                 textDecoration: "none",
-                color: active ? "#fff" : "#a0aec0",
-                background: active ? "rgba(56,189,248,0.15)" : "transparent",
+                transition: "0.2s ease",
+                color: active ? "#ffffff" : "#94a3b8",
+                background: active
+                  ? "rgba(56,189,248,0.18)"
+                  : "transparent",
+                borderLeft: active ? "3px solid #38bdf8" : "3px solid transparent",
+              }}
+              onMouseEnter={(e) => {
+                if (!active) {
+                  e.currentTarget.style.background = "rgba(255,255,255,0.05)";
+                  e.currentTarget.style.color = "#ffffff";
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (!active) {
+                  e.currentTarget.style.background = "transparent";
+                  e.currentTarget.style.color = "#94a3b8";
+                }
               }}
             >
               <Icon size={18} />
@@ -63,6 +90,11 @@ export default function Sidebar() {
             </Link>
           );
         })}
+      </div>
+
+      {/* FOOTER */}
+      <div style={{ marginTop: "auto", fontSize: 11, color: "#64748b" }}>
+        v1.0 • DPID System
       </div>
     </div>
   );
