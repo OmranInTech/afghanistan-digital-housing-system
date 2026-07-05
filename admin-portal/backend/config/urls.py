@@ -1,17 +1,21 @@
-# config/urls.py (or your main project urls.py)
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('accounts.urls')), # This routes to accounts/urls.py
+    
+    # Unified Core Routing Manifest
+    path('api/', include('deals.urls')),
     path('api/', include('citizens.urls')),
     path('api/', include('properties.urls')),
-    path('api/', include('ownership.urls')),
-    path('api/deals/', include('deals.urls')),
-    path('api/', include('contracts.urls')),
     path('api/', include('documents.urls')),
     path('api/', include('verification.urls')),
-    path('api/workflow/', include('workflow.urls')),
 
+    path('', include('accounts.urls')),
+    
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

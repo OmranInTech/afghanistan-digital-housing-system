@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from django.contrib.auth import authenticate # Added this import
+from django.contrib.auth import authenticate
 from .models import Agent
 import json
 
@@ -31,7 +31,7 @@ class AgentRegistrationSerializer(serializers.ModelSerializer):
 class LoginSerializer(serializers.Serializer):
     email = serializers.EmailField()
     password = serializers.CharField(write_only=True)
-    auth_code = serializers.CharField(required=False) # Made optional if not always needed
+    auth_code = serializers.CharField(required=False)  # Made optional if not always needed
 
     def validate(self, data):
         email = data.get("email")
@@ -45,6 +45,6 @@ class LoginSerializer(serializers.Serializer):
             # Check if auth_code is provided and matches
             if auth_code and hasattr(user, 'auth_code') and user.auth_code != auth_code:
                 raise serializers.ValidationError("Invalid Auth Code")
-            return user
+            return {"user": user}  # Wrapped cleanly as a dict to keep standard serializer patterns happy
         
         raise serializers.ValidationError("Invalid email or password")

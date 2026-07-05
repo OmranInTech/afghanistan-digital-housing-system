@@ -1,11 +1,12 @@
 from rest_framework import viewsets
-from rest_framework.permissions import IsAuthenticated
-
 from .models import Document
 from .serializers import DocumentSerializer
 
-
 class DocumentViewSet(viewsets.ModelViewSet):
-    queryset = Document.objects.all()
+    """
+    Handles physical file attachments linked directly to specific deals:
+    GET /api/documents/ - List uploaded attachments
+    POST /api/documents/ - Upload verification proofs
+    """
+    queryset = Document.objects.all().order_by('-uploaded_at')
     serializer_class = DocumentSerializer
-    permission_classes = [IsAuthenticated]

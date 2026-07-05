@@ -1,63 +1,18 @@
-from django.db import models
 import uuid
-
+from django.db import models
+from deals.models import Deal
 
 class Document(models.Model):
+    class DocType(models.TextChoices):
+        NATIONAL_ID = "NATIONAL_ID", "National Identity Card"
+        TITLE_DEED = "TITLE_DEED", "Official Title Deed"
+        CONTRACT_IMAGE = "CONTRACT_IMAGE", "Signed Contract Signature"
 
-    DOCUMENT_TYPES = [
-        ("NATIONAL_ID", "National ID"),
-        ("PROPERTY_DEED", "Property Deed"),
-        ("CONTRACT_PDF", "Contract PDF"),
-        ("PHOTO", "Photo"),
-        ("COURT_ORDER", "Court Order"),
-        ("WITNESS_LETTER", "Witness Letter"),
-        ("OTHER", "Other"),
-    ]
-
-    id = models.UUIDField(
-        primary_key=True,
-        default=uuid.uuid4,
-        editable=False
-    )
-
-    deal = models.ForeignKey(
-        "deals.Deal",
-        on_delete=models.CASCADE,
-        related_name="documents",
-        null=True,
-        blank=True
-    )
-
-    property = models.ForeignKey(
-        "properties.Property",
-        on_delete=models.CASCADE,
-        related_name="documents",
-        null=True,
-        blank=True
-    )
-
-    citizen = models.ForeignKey(
-        "citizens.Citizen",
-        on_delete=models.CASCADE,
-        related_name="documents",
-        null=True,
-        blank=True
-    )
-
-    document_type = models.CharField(
-        max_length=50,
-        choices=DOCUMENT_TYPES
-    )
-
-    file = models.FileField(
-        upload_to="documents/",
-        null=True,
-        blank=True
-    )
-
-    uploaded_at = models.DateTimeField(
-        auto_now_add=True
-    )
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    deal = models.ForeignKey(Deal, on_delete=models.CASCADE, related_name="documents")
+    document_type = models.CharField(max_length=30, choices=DocType.choices)
+    file = models.FileField(upload_to="registry_documents/")
+    uploaded_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.document_type} - {self.id}"
+        return f"{self.document_type} for Deal {self.deal.id}"

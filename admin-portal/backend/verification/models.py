@@ -1,26 +1,19 @@
-from django.db import models
 import uuid
-
+from django.db import models
+from deals.models import Deal
 
 class Verification(models.Model):
+    class VerificationStatus(models.TextChoices):
+        PENDING = "PENDING", "Pending Review"
+        PASSED = "PASSED", "Passed"
+        FAILED = "FAILED", "Failed"
+
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    deal = models.OneToOneField(Deal, on_delete=models.CASCADE, related_name="verification")
+    id_database_match = models.CharField(max_length=20, choices=VerificationStatus.choices, default=VerificationStatus.PENDING)
+    property_boundary_match = models.CharField(max_length=20, choices=VerificationStatus.choices, default=VerificationStatus.PENDING)
+    officer_notes = models.TextField(blank=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
-    deal = models.ForeignKey(
-        "deals.Deal",
-        on_delete=models.CASCADE,
-        related_name="verifications"
-    )
-
-    verification_type = models.CharField(max_length=50)
-    # ID_CHECK, PROPERTY_CHECK, FRAUD_CHECK, OWNERSHIP_CHECK
-
-    result = models.CharField(max_length=20, default="PENDING")
-    # PENDING, APPROVED, REJECTED
-
-    verified_by = models.UUIDField(null=True, blank=True)
-
-    verified_at = models.DateTimeField(null=True, blank=True)
-
-    remarks = models.TextField(null=True, blank=True)
-
-    created_at = models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return f"Verification for Deal {self.deal.id}"
